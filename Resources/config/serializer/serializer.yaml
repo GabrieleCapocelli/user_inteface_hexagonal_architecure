@@ -1,0 +1,20 @@
+Domain\Entity\User:
+  attributes:
+    id:
+      groups: ['userIndex']
+    nom:
+      groups: ['userIndex']
+    prenom:
+      groups: ['userIndex']
+    email:
+      groups: ['userIndex']
+    roles:
+      groups: ['userIndex']
+    equipe:
+      groups: ['userIndex']
+Domain\Entity\Equipe:
+  attributes:
+    id:
+    groups: ['equipeIndex']
+    nom:
+      groups: ['equipeIndex', 'userIndex']

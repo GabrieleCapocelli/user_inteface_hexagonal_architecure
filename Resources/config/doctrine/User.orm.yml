@@ -1,0 +1,37 @@
+Domain\Entity\User:
+  type: entity
+  table: user
+  schema: wimova
+  id:
+    id:
+      type: string
+  fields:
+    prenom:
+      type: string
+      length: 50
+      column: prenom
+    nom:
+      type: string
+      length: 50
+      column: nom
+    email:
+      type: string
+      length: 100
+      column: email
+      unique: true
+      options:
+        fixed: true
+    roles:
+      type: json
+      column: roles
+    password:
+      type: string
+      length: 100
+      column: password
+  manyToOne:
+    equipe:
+      targetEntity: Domain\Entity\Equipe
+      joinColumn:
+        name: equipe
+        referencedColumnName: id
+
