@@ -3,7 +3,7 @@
 namespace Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use src\Infra\Repository\EquipeRepository;
+use Infra\Repository\EquipeRepository;
 
 #[ORM\Entity(repositoryClass: EquipeRepository::class)]
 class Equipe

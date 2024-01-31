@@ -72,7 +72,7 @@ class AppFixtures extends Fixture
                 $faker->lastName,
                 $faker->firstName,
                 'employe'.($i+1).'@wimova.app',
-                ['ROLE_EMPLOYE'],
+                'ROLE_EMPLOYE',
                 $this->getReference('equipe2')
             );
             $employe->setPassword(
