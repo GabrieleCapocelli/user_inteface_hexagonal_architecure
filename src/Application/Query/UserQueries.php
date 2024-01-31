@@ -2,6 +2,7 @@
 
 namespace App\Query;
 
+use Domain\Entity\User;
 use Domain\Repository\UserDomainRepository;
 
 class UserQueries
@@ -16,6 +17,11 @@ class UserQueries
     public function usersIndex(): ?array
     {
         return $this->repository->findAll();
+    }
+
+    public function showUser(string $userId): ?User
+    {
+        return $this->repository->show($userId);
     }
 
 }
