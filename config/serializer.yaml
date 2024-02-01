@@ -15,6 +15,6 @@ Domain\Entity\User:
 Domain\Entity\Equipe:
   attributes:
     id:
-    groups: ['equipeIndex']
+      groups: ['equipeIndex', 'userIndex']
     nom:
       groups: ['equipeIndex', 'userIndex']

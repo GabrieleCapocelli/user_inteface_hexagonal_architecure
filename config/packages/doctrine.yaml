@@ -18,7 +18,7 @@ doctrine:
             App\Domain\Entity\:
                 #type: attribute
                 type: yml
-                dir: '%kernel.project_dir%/Resources/config/doctrine'
+                dir: '%kernel.project_dir%/src/Infra/EntitiesMapping'
                 is_bundle: false
                 prefix: 'Domain\Entity'
 

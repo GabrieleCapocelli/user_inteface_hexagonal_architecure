@@ -22,7 +22,7 @@ class EquipeRepository extends ServiceEntityRepository implements EquipeDomainRe
         parent::__construct($registry, Equipe::class);
     }
 
-    public function show(string $id): Equipe
+    public function show(string $id): ?Equipe
     {
         return $this->find($id);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Command;
+namespace App\Commands\Command;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -27,8 +27,7 @@ class CreateUserCommand
 
         #[Assert\NotNull]
         #[Assert\NotBlank]
-        #[Assert\Regex(pattern: "/^(ROLE_CHEF|ROLE_EMPLOYE)$/")]
-        private string $role,
+        private array $roles,
 
         #[Assert\NotNull]
         #[Assert\NotBlank]
@@ -57,9 +56,9 @@ class CreateUserCommand
         return $this->password;
     }
 
-    public function getRole(): string
+    public function getRoles(): array
     {
-        return $this->role;
+        return $this->roles;
     }
 
     public function getEquipe(): string

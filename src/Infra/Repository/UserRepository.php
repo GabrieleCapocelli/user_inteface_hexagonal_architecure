@@ -49,9 +49,33 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $user->getId();
     }
 
-    public function show(string $id): ?User
+    public function showUser(string $id): ?User
     {
         return $this->find($id);
+    }
+
+    public function checkUniqueEmail(string $email): bool
+    {
+        if($this->findOneBy(["email"=>$email])) return false;
+        return true;
+    }
+    public function editUser(User $user)
+    {
+        $originalUser = $this->find($user->getId());
+        $originalUser->setNom($user->getNom())
+                     ->setPrenom($user->getPrenom())
+                     ->setEmail($user->getEmail())
+                     ->setRoles($user->getRoles())
+                     ->setEquipe($user->getEquipe());
+        $this->getEntityManager()->flush();
+        return 200;
+    }
+
+    public function deleteUser(string $userId)
+    {
+        $user = $this->getEntityManager()->find(User::class,$userId);
+        $this->getEntityManager()->remove($user);
+        $this->getEntityManager()->flush();
     }
 
 //    /**

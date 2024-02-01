@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Handler;
+namespace App\Commands\Handler;
 
-use App\Command\CreateUserCommand;
-use Domain\Service\UserService;
+use App\Commands\Command\CreateUserCommand;
+use Domain\Service\User\UserCreateService;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
 class CreateUserHandler
 {
-    private UserService $userService;
+    private UserCreateService $userCreateService;
 
-    public function __construct(UserService $userService)
+    public function __construct(UserCreateService $userCreateService)
     {
-        $this->userService = $userService;
+        $this->userCreateService = $userCreateService;
     }
 
     public function __invoke(CreateUserCommand $command): string
@@ -23,9 +23,9 @@ class CreateUserHandler
           "prenom"=>$command->getPrenom(),
           "email"=>$command->getEmail(),
           "password"=>$command->getPassword(),
-          "role"=>$command->getRole(),
+          "roles"=>$command->getRoles(),
           "equipe"=>$command->getEquipe()
         ];
-        return $this->userService->createUser($userArray);
+        return $this->userCreateService->createUser($userArray);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Api\Controller;
 
-use App\Query\UserQueries;
+use App\Queries\Query\UserQueries;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
@@ -14,7 +14,7 @@ class UsersIndexController extends AbstractController
     {
         try {
             $users = $queries->usersIndex();
-            return $this->json($users, 200, [], ['groups'=>'userIndex']);
+            return $this->json($users, 200);//, [], ['groups'=>'userIndex']);
         }catch(\Throwable $e){
             return $this->json(['Exception'=>$e->getMessage()], 400);
         }

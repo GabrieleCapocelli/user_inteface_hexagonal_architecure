@@ -13,21 +13,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $email;
     private array $roles;
     private string $password;
-    private Equipe $equipe;
+    private ?Equipe $equipe;
 
-    private function __construct(string $id, string $nom, string $prenom, string $email, string $roles, Equipe $equipe)
+    private function __construct(string $id, string $nom, string $prenom, string $email, string $password, array $roles, ?Equipe $equipe)
     {
         $this->id = $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->email = $email;
-        $this->roles[] = $roles;
+        $this->password = $password;
+        $this->roles = $roles;
         $this->equipe = $equipe;
     }
 
-    public static function create(string $id, string $nom, string $prenom, string $email, string $roles, Equipe $equipe): self
+    public static function create(string $id, string $nom, string $prenom, string $email, string $password, array $roles, ?Equipe $equipe): self
     {
-        return new self($id, $nom, $prenom, $email, $roles, $equipe);
+        return new self($id, $nom, $prenom, $email, $password, $roles, $equipe);
     }
 
     public function getId(): string
@@ -94,8 +95,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getEquipe(): Equipe
+    public function getEquipe(): ?Equipe
     {
         return $this->equipe;
     }
+
+    public function setPrenom(string $prenom): static
+    {
+        $this->prenom = $prenom;
+        return $this;
+    }
+
+    public function setNom(string $nom): static
+    {
+        $this->nom = $nom;
+        return $this;
+    }
+
+    public function setEmail(string $email): static
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    public function setRoles(array $roles): static
+    {
+        $this->roles = $roles;
+        return $this;
+    }
+
+    public function setEquipe(?Equipe $equipe): static
+    {
+        $this->equipe = $equipe;
+        return $this;
+    }
+
 }
