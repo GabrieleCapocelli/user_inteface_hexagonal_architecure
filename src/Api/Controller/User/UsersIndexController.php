@@ -13,7 +13,7 @@ class UsersIndexController extends AbstractController
     public function __invoke(UserQueries $queries): JsonResponse
     {
         try {
-            $users = $queries->usersIndex();
+            $users = $queries->usersIndex($this->getUser()->getEquipe()->getId());
             return $this->json($users, 200);//, [], ['groups'=>'userIndex']);
         }catch(\Throwable $e){
             return $this->json(['Exception'=>$e->getMessage()], $e->getCode());

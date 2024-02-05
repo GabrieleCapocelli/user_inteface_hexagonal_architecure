@@ -24,10 +24,12 @@ class UserDbalRepository implements UserDomainRepository
      * @return array|null
      * @throws Exception
      */
-    public function usersIndex(): ?array
+    public function usersIndexByEquipe(string $equipeId): ?array
     {
         $users = $this->connection->createQueryBuilder()->select('*')
             ->from('user')
+            ->where('equipe = :equipeId')
+            ->setParameter('equipeId', $equipeId)
             ->executeQuery()
             ->fetchAllAssociative();
         if(!empty($users)){

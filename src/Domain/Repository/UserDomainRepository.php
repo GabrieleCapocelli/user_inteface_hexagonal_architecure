@@ -6,7 +6,7 @@ use Domain\Entity\User;
 
 interface UserDomainRepository
 {
-    public function usersIndex();
+    public function usersIndexByEquipe(string $equipeId);
     public function showUser(string $userId);
     public function addUser(User $user);
     public function editUser(User $user);

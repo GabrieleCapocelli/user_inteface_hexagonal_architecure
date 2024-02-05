@@ -15,9 +15,9 @@ class UserQueries
         $this->repository = $repository;
     }
 
-    public function usersIndex(): array
+    public function usersIndex(string $equipeId): array
     {
-        $users = $this->repository->usersIndex();
+        $users = $this->repository->usersIndexByEquipe($equipeId);
         if(!empty($users)){
             return \array_map(function(User $user){
                 return new UserDTO(
