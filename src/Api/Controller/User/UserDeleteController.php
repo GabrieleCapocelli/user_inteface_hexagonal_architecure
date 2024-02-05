@@ -1,12 +1,13 @@
 <?php
 
-namespace Api\Controller;
+namespace Api\Controller\User;
 
 use App\Commands\Command\DeleteUserCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Routing\Attribute\Route;
+
 #[Route('/api/v1/users/{userId}', name:'api_user_delete', methods:['DELETE'])]
 class UserDeleteController extends AbstractController
 {

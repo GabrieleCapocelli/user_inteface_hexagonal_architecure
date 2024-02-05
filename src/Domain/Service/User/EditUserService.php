@@ -39,4 +39,5 @@ class EditUserService
         $this->userRepository->editUser($user);
         return 200;
     }
+
 }

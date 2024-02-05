@@ -144,6 +144,21 @@ class UserDbalRepository implements UserDomainRepository
     }
 
     /**
+     * @param string $equipeId
+     * @return void
+     * @throws Exception
+     */
+    public function nullEquipe(string $equipeId): void
+    {
+        $this->connection->createQueryBuilder()
+                         ->update('user')
+                         ->set('equipe', 'null')
+                         ->where('equipe = :equipeId')
+                         ->setParameter('equipeId', $equipeId)
+                         ->executeQuery();
+    }
+
+    /**
      * @param string $email
      * @return bool
      * @throws Exception

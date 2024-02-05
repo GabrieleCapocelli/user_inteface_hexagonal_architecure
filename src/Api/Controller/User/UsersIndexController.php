@@ -1,6 +1,6 @@
 <?php
 
-namespace Api\Controller;
+namespace Api\Controller\User;
 
 use App\Queries\Query\UserQueries;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

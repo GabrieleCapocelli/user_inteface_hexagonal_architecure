@@ -1,14 +1,15 @@
 <?php
 
-namespace Api\Controller;
+namespace Api\Controller\User;
 
 use App\Commands\Command\EditUserCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
+use Symfony\Component\Routing\Attribute\Route;
+
 #[Route('/api/v1/users/{userId}', name:'api_user_edit', methods:['PUT'])]
 class UserEditController extends AbstractController
 {
