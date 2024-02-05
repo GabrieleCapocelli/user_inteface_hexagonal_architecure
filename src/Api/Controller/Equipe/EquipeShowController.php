@@ -2,6 +2,7 @@
 
 namespace Api\Controller\Equipe;
 
+use Api\Security\Voter\EquipeVoter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Queries\Query\EquipeQueries;
@@ -13,6 +14,7 @@ class EquipeShowController extends AbstractController
     public function __invoke(string $equipeId, EquipeQueries $queries): JsonResponse
     {
         try {
+            $this->denyAccessUnlessGranted(EquipeVoter::SHOW, $equipeId);
             $equipe = $queries->showEquipe($equipeId);
             return $this->json($equipe, 200);//, [], ['groups'=>'userIndex']);
         }catch(\Throwable $e){

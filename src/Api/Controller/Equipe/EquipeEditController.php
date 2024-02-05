@@ -2,6 +2,7 @@
 
 namespace Api\Controller\Equipe;
 
+use Api\Security\Voter\EquipeVoter;
 use App\Commands\Command\EditEquipeCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -20,9 +21,10 @@ class EquipeEditController extends AbstractController
         $this->messageBus = $messageBus;
     }
 
-    public function __invoke(#[MapRequestPayload] EditEquipeCommand $command): JsonResponse
+    public function __invoke(#[MapRequestPayload] EditEquipeCommand $command, string $equipeId): JsonResponse
     {
         try{
+            $this->denyAccessUnlessGranted(EquipeVoter::EDIT, $equipeId);
             $envelope = $this->messageBus->dispatch($command);
             $handledStamp = $envelope->last(HandledStamp::class);
             return $this->json($handledStamp->getResult());

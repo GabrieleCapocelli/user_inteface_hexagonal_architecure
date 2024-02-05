@@ -2,6 +2,7 @@
 
 namespace Api\Controller\User;
 
+use Api\Security\Voter\UserVoter;
 use App\Commands\Command\EditUserCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -20,9 +21,10 @@ class UserEditController extends AbstractController
         $this->messageBus = $messageBus;
     }
 
-    public function __invoke(#[MapRequestPayload] EditUserCommand $command): JsonResponse
+    public function __invoke(#[MapRequestPayload] EditUserCommand $command, string $userId): JsonResponse
     {
         try{
+            $this->denyAccessUnlessGranted(UserVoter::EDIT, $userId);
             $envelope = $this->messageBus->dispatch($command);
             $handledStamp = $envelope->last(HandledStamp::class);
             return $this->json($handledStamp->getResult());

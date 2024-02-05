@@ -54,11 +54,12 @@ class UserVoter extends Voter
     private function canShowOrEdit(UserDTO $subject, User $user): bool
     {
         if (
-            ($this->security->isGranted('ROLE_CHEF')
-            && (
-                $subject->getEquipeId() === $user->getEquipe()->getId()
-                || $subject->getEquipeId() === null
-                )
+            (
+                $this->security->isGranted('ROLE_CHEF')
+                && (
+                    $subject->getEquipeId() === $user->getEquipe()->getId()
+                    || $subject->getEquipeId() === null
+                    )
             )
             || $subject->getId() === $user->getId()
         )
@@ -71,7 +72,8 @@ class UserVoter extends Voter
     private function canDelete(UserDTO $subject, User $user)
     {
         if (
-            ($this->security->isGranted('ROLE_CHEF')
+            (
+                $this->security->isGranted('ROLE_CHEF')
                 && $subject->getEquipeId() === $user->getEquipe()->getId()
             )
             || $subject->getId() === $user->getId()

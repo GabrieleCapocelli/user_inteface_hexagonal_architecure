@@ -2,6 +2,7 @@
 
 namespace Api\Controller\Equipe;
 
+use Api\Security\Voter\EquipeVoter;
 use App\Commands\Command\DeleteEquipeCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -20,11 +21,12 @@ class EquipeDeleteController extends AbstractController
 
     public function __invoke(string $equipeId): JsonResponse
     {
-        //try{
+        try{
+            $this->denyAccessUnlessGranted(EquipeVoter::DELETE, $equipeId);
             $this->messageBus->dispatch(new DeleteEquipeCommand($equipeId));
             return new JsonResponse(null, 204);
-        //}catch(\Throwable $e){
-          //  return $this->json(["Exception"=>$e->getMessage()], $e->getCode());
-        //}
+        }catch(\Throwable $e){
+            return $this->json(["Exception"=>$e->getMessage()], $e->getCode());
+        }
     }
 }

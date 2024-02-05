@@ -9,8 +9,10 @@ use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/api/v1/equipes', name:'api_equipe_create', methods:['POST'])]
+#[IsGranted('ROLE_CHEF')]
 class EquipeCreateController extends AbstractController
 {
     private MessageBusInterface $messageBus;
@@ -20,12 +22,12 @@ class EquipeCreateController extends AbstractController
     }
     public function __invoke(#[MapRequestPayload] CreateEquipeCommand $command): JsonResponse
     {
-        //try{
+        try{
             $envelope = $this->messageBus->dispatch($command);
             $handledStamp = $envelope->last(HandledStamp::class);
             return $this->json($handledStamp->getResult(), 201);
-        //}catch(\Throwable $e){
-          //  return $this->json(['Exception'=>$e->getMessage()], $e->getCode());
-        //}
+        }catch(\Throwable $e){
+            return $this->json(['Exception'=>$e->getMessage()], $e->getCode());
+        }
     }
 }
