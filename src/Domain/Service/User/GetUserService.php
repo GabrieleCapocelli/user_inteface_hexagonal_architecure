@@ -10,18 +10,19 @@ use Domain\ValueObject\Id;
 class GetUserService
 {
     private UserDomainRepository $userRepository;
-    private EquipeDomainRepository $equipeRepository;
-
     /**
      * @param UserDomainRepository $userRepository
-     * @param EquipeDomainRepository $equipeRepository
      */
-    public function __construct(UserDomainRepository $userRepository, EquipeDomainRepository $equipeRepository)
+    public function __construct(UserDomainRepository $userRepository)
     {
         $this->userRepository = $userRepository;
-        $this->equipeRepository = $equipeRepository;
     }
 
+    /**
+     * @param string $userId
+     * @return User
+     * @throws \Exception
+     */
     public function getUser(string $userId): User
     {
         $user = $this->userRepository->showUser($userId);
@@ -36,9 +37,8 @@ class GetUserService
                 $user->getEquipe()
             );
         }else{
-            throw new \Exception('utilisateur inexistent');
+            throw new \Exception('utilisateur inexistent', 404);
         }
     }
-
 
 }

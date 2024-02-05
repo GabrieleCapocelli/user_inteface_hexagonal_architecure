@@ -4,7 +4,7 @@ namespace Domain\Repository;
 
 interface EquipeDomainRepository
 {
-    public function findAll();
-    public function show(string $id);
+    public function equipesIndex();
+    public function showEquipe(string $id);
 
 }

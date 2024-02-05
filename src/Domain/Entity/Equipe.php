@@ -3,9 +3,9 @@
 namespace Domain\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Infra\Repository\EquipeRepository;
+use Infra\Repository\EquipeDbalRepository;
 
-#[ORM\Entity(repositoryClass: EquipeRepository::class)]
+#[ORM\Entity(repositoryClass: EquipeDbalRepository::class)]
 class Equipe
 {
     private string $id;

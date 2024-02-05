@@ -23,9 +23,14 @@ class UserCreateService
         $this->uniqueEmail = $uniqueEmail;
     }
 
+    /**
+     * @param array $userArray
+     * @return string
+     * @throws \Exception
+     */
     public function createUser(array $userArray): string
     {
-        $this->uniqueEmail->check($userArray['email']);
+       $this->uniqueEmail->check($userArray['email']);
         $user = User::create(
             Id::generate(),
             $userArray['nom'],
@@ -33,10 +38,11 @@ class UserCreateService
             $userArray['email'],
             $userArray['password'],
             $userArray['roles'],
-            $this->equipeRepository->find($userArray['equipe'])
+            $this->equipeRepository->showEquipe($userArray['equipe']) ?? null
         );
         $user->setPassword($this->hasher->hashPassword($user,$userArray['password']));
-        return $this->userRepository->addUser($user);
+        $this->userRepository->addUser($user);
+        return $user->getId();
     }
 
 }

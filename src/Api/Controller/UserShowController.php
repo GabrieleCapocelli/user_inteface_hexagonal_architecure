@@ -16,7 +16,7 @@ class UserShowController extends AbstractController
             $user = $queries->showUser($userId);
             return $this->json($user, 200);//, [], ['groups'=>'userIndex']);
         }catch(\Throwable $e){
-            return $this->json(['Exception'=>$e->getMessage()], 400);
+            return $this->json(['Exception'=>$e->getMessage()], $e->getCode());
         }
     }
 }

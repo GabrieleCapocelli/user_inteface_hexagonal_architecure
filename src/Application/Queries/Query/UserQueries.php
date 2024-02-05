@@ -17,32 +17,39 @@ class UserQueries
 
     public function usersIndex(): array
     {
-        $users = $this->repository->findAll();
-        return \array_map(function(User $user){
+        $users = $this->repository->usersIndex();
+        if(!empty($users)){
+            return \array_map(function(User $user){
+                return new UserDTO(
+                    $user->getId(),
+                    $user->getPrenom(),
+                    $user->getNom(),
+                    $user->getEmail(),
+                    $user->getRoles(),
+                    $user->getEquipe()->getId(),
+                    $user->getEquipe()->getNom()
+                );
+            }, $users);
+        }
+        return [];
+    }
+
+    public function showUser(string $userId): ?UserDTO
+    {
+        if($this->repository->checkIfExists($userId)){
+            $user = $this->repository->showUser($userId);
             return new UserDTO(
                 $user->getId(),
                 $user->getPrenom(),
                 $user->getNom(),
                 $user->getEmail(),
                 $user->getRoles(),
-                $user->getEquipe()->getId(),
-                $user->getEquipe()->getNom()
+                $user->getEquipe()?->getId(),
+                $user->getEquipe()?->getNom()
             );
-        }, $users);
-    }
-
-    public function showUser(string $userId): ?UserDTO
-    {
-        $user = $this->repository->showUser($userId);
-        return new UserDTO(
-            $user->getId(),
-            $user->getPrenom(),
-            $user->getNom(),
-            $user->getEmail(),
-            $user->getRoles(),
-            $user->getEquipe()->getId(),
-            $user->getEquipe()->getNom()
-        );
+        }else{
+            throw new \Exception('utilisateur inexistent', 404);
+        }
     }
 
 }

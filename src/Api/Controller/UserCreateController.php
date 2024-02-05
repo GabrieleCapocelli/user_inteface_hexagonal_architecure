@@ -25,7 +25,7 @@ class UserCreateController extends AbstractController
             $handledStamp = $envelope->last(HandledStamp::class);
             return $this->json($handledStamp->getResult(), 201);
         }catch(\Throwable $e){
-            return $this->json(['Exception'=>$e->getMessage()]);
+            return $this->json(['Exception'=>$e->getMessage()], $e->getCode());
         }
     }
 }

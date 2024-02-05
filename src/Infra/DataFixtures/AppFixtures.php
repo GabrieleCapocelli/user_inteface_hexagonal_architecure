@@ -35,7 +35,8 @@ class AppFixtures extends Fixture
                 $faker->lastName,
                 $faker->firstName,
                 'chef'.($i+1).'@wimova.app',
-                'ROLE_CHEF',
+                '',
+                ['ROLE_CHEF'],
                 $this->getReference('equipe'.($i+1))
             );
             $chef->setPassword(
@@ -55,7 +56,8 @@ class AppFixtures extends Fixture
                 $faker->lastName,
                 $faker->firstName,
                 'employe'.($i+1).'@wimova.app',
-                'ROLE_EMPLOYE',
+                '',
+                ['ROLE_EMPLOYE'],
                 $this->getReference('equipe1')
             );
             $employe->setPassword(
@@ -72,7 +74,8 @@ class AppFixtures extends Fixture
                 $faker->lastName,
                 $faker->firstName,
                 'employe'.($i+1).'@wimova.app',
-                'ROLE_EMPLOYE',
+                '',
+                ['ROLE_EMPLOYE'],
                 $this->getReference('equipe2')
             );
             $employe->setPassword(

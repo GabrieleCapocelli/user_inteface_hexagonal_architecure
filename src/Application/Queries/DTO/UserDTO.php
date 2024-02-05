@@ -9,10 +9,10 @@ class UserDTO
     private string $nom;
     private string $email;
     private array $roles;
-    private string $equipeId;
-    private string $equipeNom;
+    private ?string $equipeId;
+    private ?string $equipeNom;
 
-    public function __construct(string $id, string $prenom, string $nom, string $email, array $roles, string $equipeId, string $equipeNom)
+    public function __construct(string $id, string $prenom, string $nom, string $email, array $roles, ?string $equipeId, ?string $equipeNom)
     {
         $this->id = $id;
         $this->prenom = $prenom;
@@ -48,12 +48,12 @@ class UserDTO
         return $this->roles;
     }
 
-    public function getEquipeId(): string
+    public function getEquipeId(): ?string
     {
         return $this->equipeId;
     }
 
-    public function getEquipeNom(): string
+    public function getEquipeNom(): ?string
     {
         return $this->equipeNom;
     }

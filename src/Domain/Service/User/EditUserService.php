@@ -20,6 +20,11 @@ class EditUserService
         $this->getUserService = $getUserService;
     }
 
+    /**
+     * @param array $userArray
+     * @return int
+     * @throws \Exception
+     */
     public function editUser(array $userArray): int
     {
         $user = $this->getUserService->getUser($userArray['id']);
@@ -30,7 +35,8 @@ class EditUserService
              ->setPrenom($userArray['prenom'])
              ->setEmail($userArray['email'])
              ->setRoles($userArray['roles'])
-             ->setEquipe($this->equipeRepository->show($userArray['equipe']));
-        return $this->userRepository->editUser($user);
+             ->setEquipe($this->equipeRepository->showEquipe($userArray['equipe']) ?? null);
+        $this->userRepository->editUser($user);
+        return 200;
     }
 }

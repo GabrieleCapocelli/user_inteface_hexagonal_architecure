@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Messenger\MessageBusInterface;
 #[Route('/api/v1/users/{userId}', name:'api_user_delete', methods:['DELETE'])]
-class DeleteUserController extends AbstractController
+class UserDeleteController extends AbstractController
 {
     private MessageBusInterface $messageBus;
 
@@ -23,7 +23,7 @@ class DeleteUserController extends AbstractController
             $this->messageBus->dispatch(new DeleteUserCommand($userId));
             return new JsonResponse(null, 204);
         }catch(\Throwable $e){
-            return $this->json(["Exception"=>$e->getMessage()]);
+            return $this->json(["Exception"=>$e->getMessage()], $e->getCode());
         }
     }
 }

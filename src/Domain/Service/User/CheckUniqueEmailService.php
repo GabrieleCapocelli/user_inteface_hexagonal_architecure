@@ -16,7 +16,7 @@ class CheckUniqueEmailService
     public function check(string $email): bool
     {
         if(!$this->repository->checkUniqueEmail($email)){
-            throw new \Exception("email déjà utilisé");
+            throw new \Exception("email déjà utilisé", 400);
         }
         return true;
     }

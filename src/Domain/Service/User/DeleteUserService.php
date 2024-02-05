@@ -7,18 +7,18 @@ use Domain\Repository\UserDomainRepository;
 class DeleteUserService
 {
     private UserDomainRepository $userDomainRepository;
-    private GetUserService $getUserService;
 
-    public function __construct(UserDomainRepository $userDomainRepository, GetUserService $getUserService)
+    public function __construct(UserDomainRepository $userDomainRepository)
     {
         $this->userDomainRepository = $userDomainRepository;
-        $this->getUserService = $getUserService;
     }
 
     public function deleteUser(string $userId): void
     {
-        if($this->getUserService->getUser($userId)){
+        if($this->userDomainRepository->checkIfExists($userId)){
             $this->userDomainRepository->deleteUser($userId);
+        }else{
+            throw new \Exception('utilisateur inexistent', 404);
         }
     }
 
