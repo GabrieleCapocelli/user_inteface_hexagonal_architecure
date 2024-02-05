@@ -2,6 +2,7 @@
 
 namespace Api\Controller\User;
 
+use Api\Security\Voter\UserVoter;
 use App\Commands\Command\DeleteUserCommand;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -21,6 +22,7 @@ class UserDeleteController extends AbstractController
     public function __invoke(string $userId): JsonResponse
     {
         try{
+            $this->denyAccessUnlessGranted(UserVoter::DELETE, $userId);
             $this->messageBus->dispatch(new DeleteUserCommand($userId));
             return new JsonResponse(null, 204);
         }catch(\Throwable $e){

@@ -39,7 +39,7 @@ class UserDbalRepository implements UserDomainRepository
                     $user['email'],
                     $user['password'],
                     json_decode($user['roles']),
-                    $this->equipeDomainRepository->showEquipe($user['equipe'])
+                    $user['equipe'] ? $this->equipeDomainRepository->showEquipe($user['equipe']) : null
                 );
             }, $users);
         }

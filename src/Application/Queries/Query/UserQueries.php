@@ -26,8 +26,8 @@ class UserQueries
                     $user->getNom(),
                     $user->getEmail(),
                     $user->getRoles(),
-                    $user->getEquipe()->getId(),
-                    $user->getEquipe()->getNom()
+                    $user->getEquipe()?->getId(),
+                    $user->getEquipe()?->getNom()
                 );
             }, $users);
         }
