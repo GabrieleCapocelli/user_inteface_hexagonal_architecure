@@ -24,6 +24,21 @@ class UserDbalRepository implements UserDomainRepository
      * @return array|null
      * @throws Exception
      */
+    public function usersIndex(): ?array
+    {
+        $users = $this->connection->createQueryBuilder()
+                                ->select('*')
+                                ->from('user')
+                                ->executeQuery()
+                                ->fetchAllAssociative();
+        return $this->returnUsersArray($users);
+    }
+
+    /**
+     * @param string $equipeId
+     * @return array|null
+     * @throws Exception
+     */
     public function usersIndexByEquipe(string $equipeId): ?array
     {
         $users = $this->connection->createQueryBuilder()->select('*')
@@ -32,20 +47,7 @@ class UserDbalRepository implements UserDomainRepository
             ->setParameter('equipeId', $equipeId)
             ->executeQuery()
             ->fetchAllAssociative();
-        if(!empty($users)){
-            return \array_map(function(array $user){
-                return User::create(
-                    Id::fromString($user['id']),
-                    $user['nom'],
-                    $user['prenom'],
-                    $user['email'],
-                    $user['password'],
-                    json_decode($user['roles']),
-                    $user['equipe'] ? $this->equipeDomainRepository->showEquipe($user['equipe']) : null
-                );
-            }, $users);
-        }
-        return null;
+        return $this->returnUsersArray($users);
     }
 
     /**
@@ -194,5 +196,27 @@ class UserDbalRepository implements UserDomainRepository
             return false;
         }
         return true;
+    }
+
+    /**
+     * @param array $users
+     * @return array|User[]|null
+     */
+    public function returnUsersArray(array $users): ?array
+    {
+        if (!empty($users)) {
+            return \array_map(function (array $user) {
+                return User::create(
+                    Id::fromString($user['id']),
+                    $user['nom'],
+                    $user['prenom'],
+                    $user['email'],
+                    $user['password'],
+                    json_decode($user['roles']),
+                    $user['equipe'] ? $this->equipeDomainRepository->showEquipe($user['equipe']) : null
+                );
+            }, $users);
+        }
+        return null;
     }
 }

@@ -3,6 +3,7 @@
 namespace Domain\Service\User;
 
 use Domain\Entity\User;
+use Domain\Exceptions\UserUndefinedException;
 use Domain\Repository\EquipeDomainRepository;
 use Domain\Repository\UserDomainRepository;
 use Domain\ValueObject\Id;
@@ -37,7 +38,7 @@ class GetUserService
                 $user->getEquipe()
             );
         }else{
-            throw new \Exception('utilisateur inexistent', 404);
+            throw new UserUndefinedException($userId);
         }
     }
 

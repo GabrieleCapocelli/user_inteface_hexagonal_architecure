@@ -20,7 +20,7 @@ class EquipeCreateService
     }
 
     /**
-     * @param array $equipeArray
+     * @param string $nom
      * @return string
      * @throws \Exception
      */

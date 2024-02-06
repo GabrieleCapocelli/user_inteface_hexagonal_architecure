@@ -1,0 +1,12 @@
+Domain\Entity\Equipe:
+  type: entity
+  table: equipe
+  schema: wimova_test
+  id:
+    id:
+      type: string
+  fields:
+    nom:
+      type: string
+      length: 50
+      column: nom

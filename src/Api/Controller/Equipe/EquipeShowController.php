@@ -13,12 +13,8 @@ class EquipeShowController extends AbstractController
 {
     public function __invoke(string $equipeId, EquipeQueries $queries): JsonResponse
     {
-        try {
-            $this->denyAccessUnlessGranted(EquipeVoter::SHOW, $equipeId);
-            $equipe = $queries->showEquipe($equipeId);
-            return $this->json($equipe, 200);//, [], ['groups'=>'userIndex']);
-        }catch(\Throwable $e){
-            return $this->json(['Exception'=>$e->getMessage()], $e->getCode());
-        }
+        $this->denyAccessUnlessGranted(EquipeVoter::SHOW, $equipeId);
+        $equipe = $queries->showEquipe($equipeId);
+        return $this->json($equipe, 200);//, [], ['groups'=>'userIndex']);
     }
 }

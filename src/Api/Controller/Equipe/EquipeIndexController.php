@@ -12,10 +12,6 @@ class EquipeIndexController extends AbstractController
 {
     public function __invoke(EquipeQueries $queries): JsonResponse
     {
-        try{
-            return $this->json($queries->equipesIndex(), 200);
-        }catch(\Throwable $e){
-            return $this->json(['Exception'=>$e->getMessage()], $e->getCode());
-        }
+        return $this->json($queries->equipesIndex(), 200);
     }
 }

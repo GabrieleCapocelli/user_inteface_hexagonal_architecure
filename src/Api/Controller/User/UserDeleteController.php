@@ -21,12 +21,8 @@ class UserDeleteController extends AbstractController
 
     public function __invoke(string $userId): JsonResponse
     {
-        try{
-            $this->denyAccessUnlessGranted(UserVoter::DELETE, $userId);
-            $this->messageBus->dispatch(new DeleteUserCommand($userId));
-            return new JsonResponse(null, 204);
-        }catch(\Throwable $e){
-            return $this->json(["Exception"=>$e->getMessage()], $e->getCode());
-        }
+        $this->denyAccessUnlessGranted(UserVoter::DELETE, $userId);
+        $this->messageBus->dispatch(new DeleteUserCommand($userId));
+        return new JsonResponse(null, 204);
     }
 }

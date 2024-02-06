@@ -23,14 +23,10 @@ class UserEditController extends AbstractController
 
     public function __invoke(#[MapRequestPayload] EditUserCommand $command, string $userId): JsonResponse
     {
-        try{
-            $this->denyAccessUnlessGranted(UserVoter::EDIT, $userId);
-            $envelope = $this->messageBus->dispatch($command);
-            $handledStamp = $envelope->last(HandledStamp::class);
-            return $this->json($handledStamp->getResult());
-        }catch(\Throwable $e){
-            return $this->json(["Exception"=>$e->getMessage()], $e->getCode());
-        }
+        $this->denyAccessUnlessGranted(UserVoter::EDIT, $userId);
+        $envelope = $this->messageBus->dispatch($command);
+        $handledStamp = $envelope->last(HandledStamp::class);
+        return $this->json($handledStamp->getResult());
     }
 
 }

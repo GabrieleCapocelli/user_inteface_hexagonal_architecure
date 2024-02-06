@@ -2,6 +2,7 @@
 
 namespace Domain\Service\Equipe;
 
+use Domain\Exceptions\EquipeUndefinedException;
 use Domain\Repository\EquipeDomainRepository;
 use Domain\Service\User\NullEquipeService;
 
@@ -26,9 +27,9 @@ class DeleteEquipeService
             $equipe->attach($this->nullEquipeService);
             $equipe->notify();
             $this->equipeDomainRepository->deleteEquipe($equipeId);
-            $equipe->attach($this->nullEquipeService);
+            $equipe->detach($this->nullEquipeService);
         }else{
-            throw new \Exception('equipe inexistent', 404);
+            throw new EquipeUndefinedException($equipeId);
         }
     }
 

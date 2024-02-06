@@ -2,6 +2,7 @@
 
 namespace Domain\Service\User;
 
+use Domain\Exceptions\NotUniqueEmailException;
 use Domain\Repository\UserDomainRepository;
 
 class CheckUniqueEmailService
@@ -16,7 +17,7 @@ class CheckUniqueEmailService
     public function check(string $email): bool
     {
         if(!$this->repository->checkUniqueEmail($email)){
-            throw new \Exception("email déjà utilisé", 400);
+            throw new NotUniqueEmailException($email);
         }
         return true;
     }

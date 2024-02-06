@@ -3,6 +3,7 @@
 namespace App\Queries\Query;
 use App\Queries\DTO\EquipeDTO;
 use Domain\Entity\Equipe;
+use Domain\Exceptions\EquipeUndefinedException;
 use Domain\Repository\EquipeDomainRepository;
 class EquipeQueries
 {
@@ -36,7 +37,7 @@ class EquipeQueries
                 $equipe->getNom(),
             );
         } else {
-            throw new \Exception('equipe inexistent', 404);
+            throw new EquipeUndefinedException($equipeId);
         }
     }
 

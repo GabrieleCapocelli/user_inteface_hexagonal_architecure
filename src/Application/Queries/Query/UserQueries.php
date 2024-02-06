@@ -4,6 +4,7 @@ namespace App\Queries\Query;
 
 use App\Queries\DTO\UserDTO;
 use Domain\Entity\User;
+use Domain\Exceptions\UserUndefinedException;
 use Domain\Repository\UserDomainRepository;
 
 class UserQueries
@@ -15,9 +16,13 @@ class UserQueries
         $this->repository = $repository;
     }
 
-    public function usersIndex(string $equipeId): array
+    public function usersIndex(?string $equipeId): array
     {
-        $users = $this->repository->usersIndexByEquipe($equipeId);
+        if(is_null($equipeId)){
+            $users = $this->repository->usersIndex();
+        }else{
+            $users = $this->repository->usersIndexByEquipe($equipeId);
+        }
         if(!empty($users)){
             return \array_map(function(User $user){
                 return new UserDTO(
@@ -48,7 +53,7 @@ class UserQueries
                 $user->getEquipe()?->getNom()
             );
         }else{
-            throw new \Exception('utilisateur inexistent', 404);
+            throw new UserUndefinedException($userId);
         }
     }
 

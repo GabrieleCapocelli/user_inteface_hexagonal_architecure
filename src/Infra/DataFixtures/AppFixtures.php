@@ -87,6 +87,24 @@ class AppFixtures extends Fixture
             $manager->persist($employe);
         }
 
+        //admin
+        $admin = User::create(
+            Id::generate(),
+            $faker->lastName,
+            $faker->firstName,
+            'admin@wimova.app',
+            '',
+            ['ROLE_ADMIN'],
+            null
+        );
+        $admin->setPassword(
+            $this->hasher->hashPassword(
+                $admin,
+                'wimova'
+            )
+        );
+        $manager->persist($admin);
+
         $manager->flush();
     }
 }

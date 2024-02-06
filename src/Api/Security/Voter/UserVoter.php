@@ -38,6 +38,8 @@ class UserVoter extends Voter
             return false;
         }
 
+        if($this->security->isGranted('ROLE_ADMIN')) return true;
+
         $subject = $this->userQueries->showUser($subject);
         if(!($subject instanceof UserDTO)) return false;
 

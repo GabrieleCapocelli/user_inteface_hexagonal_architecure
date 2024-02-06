@@ -21,12 +21,8 @@ class EquipeDeleteController extends AbstractController
 
     public function __invoke(string $equipeId): JsonResponse
     {
-        try{
-            $this->denyAccessUnlessGranted(EquipeVoter::DELETE, $equipeId);
-            $this->messageBus->dispatch(new DeleteEquipeCommand($equipeId));
-            return new JsonResponse(null, 204);
-        }catch(\Throwable $e){
-            return $this->json(["Exception"=>$e->getMessage()], $e->getCode());
-        }
+        $this->denyAccessUnlessGranted(EquipeVoter::DELETE, $equipeId);
+        $this->messageBus->dispatch(new DeleteEquipeCommand($equipeId));
+        return new JsonResponse(null, 204);
     }
 }

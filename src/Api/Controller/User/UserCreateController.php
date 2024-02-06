@@ -22,12 +22,8 @@ class UserCreateController extends AbstractController
     }
     public function __invoke(#[MapRequestPayload] CreateUserCommand $command): JsonResponse
     {
-        try{
-            $envelope = $this->messageBus->dispatch($command);
-            $handledStamp = $envelope->last(HandledStamp::class);
-            return $this->json($handledStamp->getResult(), 201);
-        }catch(\Throwable $e){
-            return $this->json(['Exception'=>$e->getMessage()], $e->getCode());
-        }
+        $envelope = $this->messageBus->dispatch($command);
+        $handledStamp = $envelope->last(HandledStamp::class);
+        return $this->json($handledStamp->getResult(), 201);
     }
 }

@@ -3,6 +3,7 @@
 namespace Domain\Service\Equipe;
 
 use Domain\Entity\Equipe;
+use Domain\Exceptions\EquipeUndefinedException;
 use Domain\Repository\EquipeDomainRepository;
 use Domain\ValueObject\Id;
 
@@ -31,7 +32,7 @@ class GetEquipeService
                 $equipe->getNom()
             );
         }else{
-            throw new \Exception('utilisateur inexistent', 404);
+            throw new EquipeUndefinedException($equipeId);
         }
     }
 

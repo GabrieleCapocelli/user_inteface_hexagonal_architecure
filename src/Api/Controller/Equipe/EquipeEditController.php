@@ -23,14 +23,10 @@ class EquipeEditController extends AbstractController
 
     public function __invoke(#[MapRequestPayload] EditEquipeCommand $command, string $equipeId): JsonResponse
     {
-        try{
-            $this->denyAccessUnlessGranted(EquipeVoter::EDIT, $equipeId);
-            $envelope = $this->messageBus->dispatch($command);
-            $handledStamp = $envelope->last(HandledStamp::class);
-            return $this->json($handledStamp->getResult());
-        }catch(\Throwable $e){
-            return $this->json(["Exception"=>$e->getMessage()], $e->getCode());
-        }
+        $this->denyAccessUnlessGranted(EquipeVoter::EDIT, $equipeId);
+        $envelope = $this->messageBus->dispatch($command);
+        $handledStamp = $envelope->last(HandledStamp::class);
+        return $this->json($handledStamp->getResult());
     }
 
 }

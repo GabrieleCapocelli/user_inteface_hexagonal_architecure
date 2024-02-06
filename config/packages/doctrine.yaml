@@ -16,9 +16,8 @@ doctrine:
         auto_mapping: true
         mappings:
             App\Domain\Entity\:
-                #type: attribute
                 type: yml
-                dir: '%kernel.project_dir%/src/Infra/EntitiesMapping'
+                dir: '%kernel.project_dir%/src/Infra/EntitiesMapping/dev'
                 is_bundle: false
                 prefix: 'Domain\Entity'
 
@@ -27,6 +26,13 @@ when@test:
         dbal:
             # "TEST_TOKEN" is typically set by ParaTest
             dbname_suffix: '_test%env(default::TEST_TOKEN)%'
+        orm:
+            mappings:
+                App\Domain\Entity\:
+                    type: yml
+                    dir: '%kernel.project_dir%/src/Infra/EntitiesMapping/test'
+                    is_bundle: false
+                    prefix: 'Domain\Entity'
 
 when@prod:
     doctrine:

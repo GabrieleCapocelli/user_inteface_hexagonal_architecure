@@ -2,21 +2,22 @@
 
 namespace Domain\Service\Equipe;
 
-use Domain\Repository\UserDomainRepository;
+use Domain\Exceptions\NotUniqueNomException;
+use Domain\Repository\EquipeDomainRepository;
 
 class CheckUniqueNomService
 {
-    private UserDomainRepository $repository;
+    private EquipeDomainRepository $repository;
 
-    public function __construct(UserDomainRepository $repository)
+    public function __construct(EquipeDomainRepository $repository)
     {
         $this->repository = $repository;
     }
 
-    public function check(string $email): bool
+    public function check(string $nom): bool
     {
-        if(!$this->repository->checkUniqueEmail($email)){
-            throw new \Exception("email déjà utilisé", 400);
+        if(!$this->repository->checkUniqueNom($nom)){
+            throw new NotUniqueNomException($nom);
         }
         return true;
     }

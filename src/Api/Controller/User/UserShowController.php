@@ -13,12 +13,8 @@ class UserShowController extends AbstractController
 {
     public function __invoke(string $userId, UserQueries $queries): JsonResponse
     {
-        try {
-            $this->denyAccessUnlessGranted(UserVoter::SHOW, $userId);
-            $user = $queries->showUser($userId);
-            return $this->json($user, 200);//, [], ['groups'=>'userIndex']);
-        }catch(\Throwable $e){
-            return $this->json(['Exception'=>$e->getMessage()], $e->getCode());
-        }
+        $this->denyAccessUnlessGranted(UserVoter::SHOW, $userId);
+        $user = $queries->showUser($userId);
+        return $this->json($user, 200);//, [], ['groups'=>'userIndex']);
     }
 }
