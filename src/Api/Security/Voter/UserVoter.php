@@ -39,6 +39,7 @@ class UserVoter extends Voter
         }
 
         $subject = $this->userQueries->showUser($subject);
+        if(!($subject instanceof UserDTO)) return false;
 
         switch ($attribute) {
             case self::SHOW:

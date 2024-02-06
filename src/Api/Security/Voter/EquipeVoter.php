@@ -39,6 +39,7 @@ class EquipeVoter extends Voter
         }
 
         $subject = $this->equipeQueries->showEquipe($subject);
+        if(!($subject instanceof EquipeDTO)) return false;
 
         switch ($attribute) {
             case self::SHOW:
