@@ -2,6 +2,7 @@
 
 namespace Tests\Domain\Service\User;
 
+use Domain\Exceptions\NotUniqueEmailException;
 use Domain\Service\User\CheckUniqueEmailService;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Tests\UserFactory;
@@ -18,9 +19,8 @@ class CheckUniqueEmailServiceTest extends KernelTestCase
         assert($checkUniqueEmailService instanceof CheckUniqueEmailService);
         //creating user
         UserFactory::returnUser();
-        //preparing to receive exception with already used email
-        $this->expectException(\Exception::class);
-        $this->expectExceptionMessage('email déjà utilisé');
+        //preparing to receive exception
+        $this->expectException(NotUniqueEmailException::class);
         $checkUniqueEmailService->check('test@test.test');
         //testing a valid email
         $this->assertTrue($checkUniqueEmailService->check('test'));

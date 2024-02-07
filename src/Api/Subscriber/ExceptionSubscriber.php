@@ -25,14 +25,13 @@ class ExceptionSubscriber implements EventSubscriberInterface
                 case $event->getThrowable() instanceof  AccessDeniedHttpException:
                     $code = 403;
                     break;
+                case $event->getThrowable() instanceof \Error:
+                    $code = 500;
+                    break;
                 default:
                     $code = 400;
                     break;
             }
-        }
-
-        if ($code < 100 || $code > 599) {
-            $code = 500;
         }
         $event->setResponse(new JsonResponse(['message' => $event->getThrowable()->getMessage(), 'status' => $code], $code));
     }

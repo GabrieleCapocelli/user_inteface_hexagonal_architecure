@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/api/v1/users', name:'api_user_create', methods:['POST'])]
-#[IsGranted('ROLE_CHEF')]
+#[IsGranted('ROLE_CHEF', null, 'seuls chefs d’équipe et administrateurs peuvent créer un utilisateur')]
 class UserCreateController extends AbstractController
 {
     private MessageBusInterface $messageBus;

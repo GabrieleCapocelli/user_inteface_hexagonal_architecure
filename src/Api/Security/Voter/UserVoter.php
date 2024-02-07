@@ -13,7 +13,6 @@ use Symfony\Bundle\SecurityBundle\Security;
 class UserVoter extends Voter
 {
     public const EDIT = 'USER_EDIT';
-    public const SHOW = 'USER_SHOW';
     public const DELETE = 'USER_DELETE';
 
     private Security $security;
@@ -28,7 +27,7 @@ class UserVoter extends Voter
 
     protected function supports(string $attribute, mixed $subject): bool
     {
-        return in_array($attribute, [self::EDIT, self::SHOW, self::DELETE]);
+        return in_array($attribute, [self::EDIT, self::DELETE]);
     }
 
     protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
@@ -44,9 +43,8 @@ class UserVoter extends Voter
         if(!($subject instanceof UserDTO)) return false;
 
         switch ($attribute) {
-            case self::SHOW:
             case self::EDIT:
-                return $this->canShowOrEdit($subject, $user);
+                return $this->canEdit($subject, $user);
             case self::DELETE:
                 return $this->canDelete($subject, $user);
         }
@@ -54,16 +52,11 @@ class UserVoter extends Voter
         return false;
     }
 
-    private function canShowOrEdit(UserDTO $subject, User $user): bool
+    private function canEdit(UserDTO $subject, User $user): bool
     {
         if (
-            (
-                $this->security->isGranted('ROLE_CHEF')
-                && (
-                    $subject->getEquipeId() === $user->getEquipe()->getId()
-                    || $subject->getEquipeId() === null
-                    )
-            )
+            ($this->security->isGranted('ROLE_CHEF')
+                && $subject->getEquipeId() === $user->getEquipe()->getId())
             || $subject->getId() === $user->getId()
         )
         {

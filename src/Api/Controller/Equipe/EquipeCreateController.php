@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/api/v1/equipes', name:'api_equipe_create', methods:['POST'])]
-#[IsGranted('ROLE_CHEF')]
+#[IsGranted('ROLE_ADMIN', null, 'seuls les administrateurs peuvent créer une équipe')]
 class EquipeCreateController extends AbstractController
 {
     private MessageBusInterface $messageBus;

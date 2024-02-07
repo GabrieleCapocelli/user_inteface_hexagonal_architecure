@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  api:
+    build:
+      dockerfile: docker/Dockerfile
+    environment:
+      APP_SECRET: "a74bc95795a778907e2f5213dafaf1cd"
+      DATABASE_URL: "mysql://root:root@mysql:3306/wimova?serverVersion=8.0.32&charset=utf8mb4"
+      JWT_SECRET_KEY: "%kernel.project_dir%/config/jwt/private.pem"
+      JWT_PUBLIC_KEY: "%kernel.project_dir%/config/jwt/public.pem"
+      JWT_PASSPHRASE: "1d5f993d3e36e26f28eaca51affaa361a0845a90a095db09a7b40e27149f15a1"
+      CORS_ALLOW_ORIGIN: '^https?://(localhost|127\.0\.0\.1)(:[0-9]+)?$'
+    restart: always
+    ports:
+      - "8000:80"
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root

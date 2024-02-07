@@ -13,7 +13,6 @@ use Symfony\Bundle\SecurityBundle\Security;
 class EquipeVoter extends Voter
 {
     public const EDIT = 'EQUIPE_EDIT';
-    public const SHOW = 'EQUIPE_SHOW';
     public const DELETE = 'EQUIPE_DELETE';
 
     private Security $security;
@@ -28,7 +27,7 @@ class EquipeVoter extends Voter
 
     protected function supports(string $attribute, mixed $subject): bool
     {
-        return in_array($attribute, [self::EDIT, self::SHOW, self::DELETE]);
+        return in_array($attribute, [self::EDIT, self::DELETE]);
     }
 
     protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token): bool
@@ -44,19 +43,11 @@ class EquipeVoter extends Voter
         if(!($subject instanceof EquipeDTO)) return false;
 
         switch ($attribute) {
-            case self::SHOW:
-                return $this->canShow($subject, $user);
             case self::EDIT:
             case self::DELETE:
                 return $this->canEditOrDelete($subject, $user);
         }
 
-        return false;
-    }
-
-    private function canShow(EquipeDTO $subject, User $user)
-    {
-        if($user->getEquipe()->getId() === $subject->getId()) return true;
         return false;
     }
 
