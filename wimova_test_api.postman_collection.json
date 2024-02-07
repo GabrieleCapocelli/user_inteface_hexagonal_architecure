@@ -1,0 +1,250 @@
+{
+	"info": {
+		"_postman_id": "98fd05fd-916a-4851-97c6-fe9ab6105405",
+		"name": "wimova_test_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24886496"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "users index",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDczMTI4NDEsImV4cCI6MTAwMDAwMDAxNzA3MzEyODQxLCJyb2xlcyI6WyJST0xFX0NIRUYiXSwidXNlcm5hbWUiOiJjaGVmMkB3aW1vdmEuYXBwIn0.TjdMTNAOECchmAPfjkNqiZTIFPgFT_X3GZfPqAFJO49fo4p6Lg9ElZjH2InjQZEmWAEPMTJVgGby9zuEtyWsBZDS8sOWAwBKIu1F3Ez77ikrHanADCAO_v5FcW908_4OzQOze9UH4tM1yUNpKhzyzQDi0s7gWvFrQhpcR7p1v44_aWEI6pJVKCsEuh59JPoYBUodA6AuSmN4mmF3MEgqLahTmqFrs8tkxDaKzrJYbXgaCNGQ8K3qHP2k67py67ito7ZGzqOePxiuz8XUiQEzUiapvcdSBZVo4inUIWCdZNtSAZNHNad8lyjyZZACQGK9aVeQV96JZWovSt5swve2Xw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/v1/users"
+					},
+					"response": []
+				},
+				{
+					"name": "create User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDczMTI5ODgsImV4cCI6MTAwMDAwMDAxNzA3MzEyOTg4LCJyb2xlcyI6WyJST0xFX0VNUExPWUUiXSwidXNlcm5hbWUiOiJlbXBsb3llN0B3aW1vdmEuYXBwIn0.adJ0eR4auUWrTlr0QCW2J2nCyhcYbnq5mZ6rhtKDqwqQ1fDmrkHZKQ6Nvu-0vTAy6Dl5BUzv_YImUxaAKd8wl7zE9wMSYPdsU2uOGoH4DOmpwj0GNx7qSNNDclp801SAQKxvy0AvhHfk0wYFmSTVXNVVO-2YC2H_4VGXYLUcPOaa4FRsbbo0-m2lJm8P5gXn_CjvFbeu9u6S9EwxlH1AE_ptJOaaFme9yG_LFZ0myaorwWKiex-bM7ccJI6OUOxU7F9yQfhVb3O7Qka6hvyBjiBYgG79NXGj-YvS7UNwpLPss4A136pAdwmraTD8Pt3hjLw3gAdN0w8qDhaTONGXqQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\": \"test\",\n    \"prenom\": \"test\",\n    \"email\": \"test@wimova.app\",\n    \"password\": \"test\",\n    \"roles\": [\"ROLE_EMPLOYE\"],\n    \"equipe\": \"301bb772-4270-4228-bb44-ea6bd9b0240a\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/v1/users"
+					},
+					"response": []
+				},
+				{
+					"name": "show User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDczMTI5ODgsImV4cCI6MTAwMDAwMDAxNzA3MzEyOTg4LCJyb2xlcyI6WyJST0xFX0VNUExPWUUiXSwidXNlcm5hbWUiOiJlbXBsb3llN0B3aW1vdmEuYXBwIn0.adJ0eR4auUWrTlr0QCW2J2nCyhcYbnq5mZ6rhtKDqwqQ1fDmrkHZKQ6Nvu-0vTAy6Dl5BUzv_YImUxaAKd8wl7zE9wMSYPdsU2uOGoH4DOmpwj0GNx7qSNNDclp801SAQKxvy0AvhHfk0wYFmSTVXNVVO-2YC2H_4VGXYLUcPOaa4FRsbbo0-m2lJm8P5gXn_CjvFbeu9u6S9EwxlH1AE_ptJOaaFme9yG_LFZ0myaorwWKiex-bM7ccJI6OUOxU7F9yQfhVb3O7Qka6hvyBjiBYgG79NXGj-YvS7UNwpLPss4A136pAdwmraTD8Pt3hjLw3gAdN0w8qDhaTONGXqQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/v1/users/19355eb5-6dd6-4448-b5b1-295aa0de8f2a"
+					},
+					"response": []
+				},
+				{
+					"name": "edit User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDY3ODM1MTksImV4cCI6MTAwMDAwMDAxNzA2NzgzNTE5LCJyb2xlcyI6WyJST0xFX0NIRUYiXSwidXNlcm5hbWUiOiJjaGVmMUB3aW1vdmEuYXBwIn0.o-fXxWfM87paKsmADEINJXcDTRnyNP9Q8YoqZLkuhRTRbpDTpNz7K8mhzUzeOyceMJzUScCWWsQ42wVB8V4zDA-ullKWSSc3gxzeCpFfyTMHPzR9Qo8NGGLHjM9--Vd4lu0Rn1iiUd6bhOMJSbWlyPrcPcB1CKXncOE5q033mxwUggk_C3IV3EfzgIAqyhBRbh7qoFrOcGs9zBG3xSwbTukHnEfYPFxEv3jB9jFXAT3HMdXsw6ZBWlep67cpd5ywCMEx9NDUfV6wINyIx5uPa7hxxL-aHvS0A3yM842By_LbMKhDdmGvfK6W5a0qqc5-5tHflNNNmgC8KyBKg1Rh9g"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"id\": \"2b3f1377-0213-4459-a3f7-f77f6e0381fe\",\n    \"nom\": \"testaaa\",\n    \"prenom\": \"test\",\n    \"email\": \"employe11@wimova.app\",\n    \"roles\": [\"ROLE_EMPLOYE\"],\n    \"equipe\": \"12141404-1b5c-45c8-8b13-6c0cbbd34dff\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/v1/users/2b3f1377-0213-4459-a3f7-f77f6e0381fe"
+					},
+					"response": []
+				},
+				{
+					"name": "delete User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDcxMjkwNDIsImV4cCI6MTAwMDAwMDAxNzA3MTI5MDQyLCJyb2xlcyI6WyJST0xFX0NIRUYiXSwidXNlcm5hbWUiOiJjaGVmMUB3aW1vdmEuYXBwIn0.XqM-QsLr-XnOCkq9ir_jtwyV-Unj5zBE9Pzc_L0e3lIWaaEHRLS81X1AY0FoP9PNsxXmrpsMfE_mwBB4e9TT1oppP7tMnhctOp9p-dbLY1QdSEnc5iBk4fsC0_wYgIEXoppPPNuR5rJbY_EBQG-d-7ABnPCMzNVjRg1dlW4BoRl-PSKSR3bSoMjpv02q9RhNIJRADKJzdQKaE9oYvBAxNSN3bFA3ZT0FZPxXuwTLZmRt6YPYEhrbsxC58Oej4IqjYXs--DcUMG1lcoiQ7D3K1wXfzgdhEEoaPpCOFCotN7HCOtU1nFji-JADhDqvgC37QlmW4gOPt0_r1CKl5XDAZQ"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8000/api/v1/users/0a7275ad-981f-479c-8a44-06f805ead667"
+					},
+					"response": []
+				},
+				{
+					"name": "export Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDcxNjgzMzgsImV4cCI6MTAwMDAwMDAxNzA3MTY4MzM4LCJyb2xlcyI6WyJST0xFX0VNUExPWUUiXSwidXNlcm5hbWUiOiJlbXBsb3llMUB3aW1vdmEuYXBwIn0.ax_kYxr7Jt_-i2XCALOJUmGK5VIotiUKThKfZ3O6VsAmayl4sv7tisGLJosf0QJqT5yJVnYrteZw-zq9FdOh0tCtwAM-fJ02pmcvhzXqRuZ2Z6Y5eUhPF2MUwAuEPhdHizrgBMSo3zlHmeiN47oWdCVgIK2JOv3OR56rKoZiy6yYcyyGGmozxNQ_rixdo5kcvps9qvjJg5o4k51IgqOzgcpZVo2kcEWLt3N-eNAGGp9xbDFRVBWeyCHAYCVA-xmbNWXSZpYQRG1bEptyZ_DKMOwzDh2SzCTHwulh-tYKCwxA5jcUqqfCaW1RBYnSRBgkb9ShUV3wxWY78Y1XPgdAbQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/v1/usersExport"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "equipes",
+			"item": [
+				{
+					"name": "index Equipes",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDcxMjkwNDIsImV4cCI6MTAwMDAwMDAxNzA3MTI5MDQyLCJyb2xlcyI6WyJST0xFX0NIRUYiXSwidXNlcm5hbWUiOiJjaGVmMUB3aW1vdmEuYXBwIn0.XqM-QsLr-XnOCkq9ir_jtwyV-Unj5zBE9Pzc_L0e3lIWaaEHRLS81X1AY0FoP9PNsxXmrpsMfE_mwBB4e9TT1oppP7tMnhctOp9p-dbLY1QdSEnc5iBk4fsC0_wYgIEXoppPPNuR5rJbY_EBQG-d-7ABnPCMzNVjRg1dlW4BoRl-PSKSR3bSoMjpv02q9RhNIJRADKJzdQKaE9oYvBAxNSN3bFA3ZT0FZPxXuwTLZmRt6YPYEhrbsxC58Oej4IqjYXs--DcUMG1lcoiQ7D3K1wXfzgdhEEoaPpCOFCotN7HCOtU1nFji-JADhDqvgC37QlmW4gOPt0_r1CKl5XDAZQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/v1/equipes"
+					},
+					"response": []
+				},
+				{
+					"name": "show Equipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDcxMjkwNDIsImV4cCI6MTAwMDAwMDAxNzA3MTI5MDQyLCJyb2xlcyI6WyJST0xFX0NIRUYiXSwidXNlcm5hbWUiOiJjaGVmMUB3aW1vdmEuYXBwIn0.XqM-QsLr-XnOCkq9ir_jtwyV-Unj5zBE9Pzc_L0e3lIWaaEHRLS81X1AY0FoP9PNsxXmrpsMfE_mwBB4e9TT1oppP7tMnhctOp9p-dbLY1QdSEnc5iBk4fsC0_wYgIEXoppPPNuR5rJbY_EBQG-d-7ABnPCMzNVjRg1dlW4BoRl-PSKSR3bSoMjpv02q9RhNIJRADKJzdQKaE9oYvBAxNSN3bFA3ZT0FZPxXuwTLZmRt6YPYEhrbsxC58Oej4IqjYXs--DcUMG1lcoiQ7D3K1wXfzgdhEEoaPpCOFCotN7HCOtU1nFji-JADhDqvgC37QlmW4gOPt0_r1CKl5XDAZQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/v1/equipes/47a4dca4-f4e0-4373-94d8-bea6968b7761"
+					},
+					"response": []
+				},
+				{
+					"name": "delete Equipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDcxMjkwNDIsImV4cCI6MTAwMDAwMDAxNzA3MTI5MDQyLCJyb2xlcyI6WyJST0xFX0NIRUYiXSwidXNlcm5hbWUiOiJjaGVmMUB3aW1vdmEuYXBwIn0.XqM-QsLr-XnOCkq9ir_jtwyV-Unj5zBE9Pzc_L0e3lIWaaEHRLS81X1AY0FoP9PNsxXmrpsMfE_mwBB4e9TT1oppP7tMnhctOp9p-dbLY1QdSEnc5iBk4fsC0_wYgIEXoppPPNuR5rJbY_EBQG-d-7ABnPCMzNVjRg1dlW4BoRl-PSKSR3bSoMjpv02q9RhNIJRADKJzdQKaE9oYvBAxNSN3bFA3ZT0FZPxXuwTLZmRt6YPYEhrbsxC58Oej4IqjYXs--DcUMG1lcoiQ7D3K1wXfzgdhEEoaPpCOFCotN7HCOtU1nFji-JADhDqvgC37QlmW4gOPt0_r1CKl5XDAZQ"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8000/api/v1/equipes/301bb772-4270-4228-bb44-ea6bd9b0240a"
+					},
+					"response": []
+				},
+				{
+					"name": "create Equipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDcxMjkwNDIsImV4cCI6MTAwMDAwMDAxNzA3MTI5MDQyLCJyb2xlcyI6WyJST0xFX0NIRUYiXSwidXNlcm5hbWUiOiJjaGVmMUB3aW1vdmEuYXBwIn0.XqM-QsLr-XnOCkq9ir_jtwyV-Unj5zBE9Pzc_L0e3lIWaaEHRLS81X1AY0FoP9PNsxXmrpsMfE_mwBB4e9TT1oppP7tMnhctOp9p-dbLY1QdSEnc5iBk4fsC0_wYgIEXoppPPNuR5rJbY_EBQG-d-7ABnPCMzNVjRg1dlW4BoRl-PSKSR3bSoMjpv02q9RhNIJRADKJzdQKaE9oYvBAxNSN3bFA3ZT0FZPxXuwTLZmRt6YPYEhrbsxC58Oej4IqjYXs--DcUMG1lcoiQ7D3K1wXfzgdhEEoaPpCOFCotN7HCOtU1nFji-JADhDqvgC37QlmW4gOPt0_r1CKl5XDAZQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nom\":\"test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/v1/equipes"
+					},
+					"response": []
+				},
+				{
+					"name": "edit Equipe",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3MDcxMjkwNDIsImV4cCI6MTAwMDAwMDAxNzA3MTI5MDQyLCJyb2xlcyI6WyJST0xFX0NIRUYiXSwidXNlcm5hbWUiOiJjaGVmMUB3aW1vdmEuYXBwIn0.XqM-QsLr-XnOCkq9ir_jtwyV-Unj5zBE9Pzc_L0e3lIWaaEHRLS81X1AY0FoP9PNsxXmrpsMfE_mwBB4e9TT1oppP7tMnhctOp9p-dbLY1QdSEnc5iBk4fsC0_wYgIEXoppPPNuR5rJbY_EBQG-d-7ABnPCMzNVjRg1dlW4BoRl-PSKSR3bSoMjpv02q9RhNIJRADKJzdQKaE9oYvBAxNSN3bFA3ZT0FZPxXuwTLZmRt6YPYEhrbsxC58Oej4IqjYXs--DcUMG1lcoiQ7D3K1wXfzgdhEEoaPpCOFCotN7HCOtU1nFji-JADhDqvgC37QlmW4gOPt0_r1CKl5XDAZQ"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\":\"a0f96ec7-6e20-4c65-8505-191a76f47153\",\n    \"nom\":\"testbbbbbbbbba\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/v1/equipes/a0f96ec7-6e20-4c65-8505-191a76f47153"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"employe7@wimova.app\",\n    \"password\":\"wimova\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8000/api/v1/auth/login"
+			},
+			"response": []
+		}
+	]
+}
