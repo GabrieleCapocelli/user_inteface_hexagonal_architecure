@@ -70,9 +70,9 @@ docker compose rm
 |  Index Users  |         /api/v1/users          |  GET   |   
 | Export Users  |      /api/v1/usersExport       |  GET   | 
 | Create Equipe |        /api/v1/equipes         |  POST  | 
-| Delete Equipe | /api/v1/equipes/{userequipeId} | DELETE |   
-|  Edit Equipe  | /api/v1/equipes/{userequipeId} |  PUT   |   
-|  Show Equipe  | /api/v1/equipes/{userequipeId} |  GET   |   
+| Delete Equipe | /api/v1/equipes/{equipeId} | DELETE |   
+|  Edit Equipe  | /api/v1/equipes/{equipeId} |  PUT   |   
+|  Show Equipe  | /api/v1/equipes/{equipeId} |  GET   |   
 | Index Equipes |        /api/v1/equipes         |  GET   |   
 
 
