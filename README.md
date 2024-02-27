@@ -236,7 +236,7 @@ Les droits sur les operations CRUD sont gérés par des voters (un voter par res
 <h3 id="implementation">IMPLEMENTATION (src/)</h3>
 
 Bien que la logique inhérente à l’application ne soit pas extrêmement complexe, 
-j’ai développé son arborescence en suivant les principes de la Clean Architecture.
+j’ai développé son arborescence en suivant les principes du "Hexagonal Architecture".
 
 
 ``` 
