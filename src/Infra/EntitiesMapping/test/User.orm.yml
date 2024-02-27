@@ -1,7 +1,7 @@
 Domain\Entity\User:
   type: entity
   table: user
-  schema: wimova_test
+  schema: app_test
   id:
     id:
       type: string
