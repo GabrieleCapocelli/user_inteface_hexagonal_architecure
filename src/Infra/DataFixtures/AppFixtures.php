@@ -34,7 +34,7 @@ class AppFixtures extends Fixture
                 Id::generate(),
                 $faker->lastName,
                 $faker->firstName,
-                'chef'.($i+1).'@wimova.app',
+                'chef'.($i+1).'@company.app',
                 '',
                 ['ROLE_CHEF'],
                 $this->getReference('equipe'.($i+1))
@@ -42,7 +42,7 @@ class AppFixtures extends Fixture
             $chef->setPassword(
                 $this->hasher->hashPassword(
                     $chef,
-                    'wimova'
+                    'company'
                 )
             );
             $manager->persist($chef);
@@ -55,7 +55,7 @@ class AppFixtures extends Fixture
                 Id::generate(),
                 $faker->lastName,
                 $faker->firstName,
-                'employe'.($i+1).'@wimova.app',
+                'employe'.($i+1).'@company.app',
                 '',
                 ['ROLE_EMPLOYE'],
                 $this->getReference('equipe1')
@@ -63,7 +63,7 @@ class AppFixtures extends Fixture
             $employe->setPassword(
                 $this->hasher->hashPassword(
                     $employe,
-                    'wimova'
+                    'company'
                 )
             );
             $manager->persist($employe);
@@ -73,7 +73,7 @@ class AppFixtures extends Fixture
                 Id::generate(),
                 $faker->lastName,
                 $faker->firstName,
-                'employe'.($i+1).'@wimova.app',
+                'employe'.($i+1).'@company.app',
                 '',
                 ['ROLE_EMPLOYE'],
                 $this->getReference('equipe2')
@@ -81,7 +81,7 @@ class AppFixtures extends Fixture
             $employe->setPassword(
                 $this->hasher->hashPassword(
                     $employe,
-                    'wimova'
+                    'company'
                 )
             );
             $manager->persist($employe);
@@ -92,7 +92,7 @@ class AppFixtures extends Fixture
             Id::generate(),
             $faker->lastName,
             $faker->firstName,
-            'admin@wimova.app',
+            'admin@company.app',
             '',
             ['ROLE_ADMIN'],
             null
@@ -100,7 +100,7 @@ class AppFixtures extends Fixture
         $admin->setPassword(
             $this->hasher->hashPassword(
                 $admin,
-                'wimova'
+                'company'
             )
         );
         $manager->persist($admin);
