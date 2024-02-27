@@ -1,4 +1,4 @@
-<h1>TEST TECHNIQUE WIMOVA</h1>
+<h1>HEXAGONAL ARCHITECTURE IMPLEMENTATION FOR A USER MANAGEMENT INTERFACE</h1>
 
 <ul>
     <li><a href="#init">INIT</a></li>
@@ -134,7 +134,7 @@ docker compose rm
             "id": "0613f6ee-ea2f-4e6f-93f0-ff6add88006e",
             "prenom": "Jacqueline",
             "nom": "Robert",
-            "email": "employe5@wimova.app",
+            "email": "employe5@company.app",
             "roles": [
                 "ROLE_EMPLOYE"
             ],
@@ -151,7 +151,7 @@ docker compose rm
             "id": "0613f6ee-ea2f-4e6f-93f0-ff6add88006e",
             "prenom": "Jacqueline",
             "nom": "Robert",
-            "email": "employe5@wimova.app",
+            "email": "employe5@company.app",
             "roles": [
                 "ROLE_EMPLOYE"
             ],
