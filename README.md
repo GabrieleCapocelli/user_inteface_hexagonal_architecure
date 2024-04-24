@@ -265,11 +265,11 @@ src
 │   │   └── User
 │   └── ValueObject
 └── Infra
-├── DataFixtures
-├── EntitiesMapping
-│   ├── dev
-│   └── test
-└── Repository
+    ├── DataFixtures
+    ├── EntitiesMapping
+    │   ├── dev
+    │   └── test
+    └── Repository
 ```
 
 <h4>Api</h4>
