@@ -285,7 +285,7 @@ Ce layer représente les Use Cases de l'application et est développé en suivan
 
 <h4>Domain</h4>
 Le namespace Domain est le core de l'application il héberge la logique métier et j'ai essayé de rester le plus framework-agnostic possible en son sein. <br>
- * Les Entities sont conçues de maniere non-anemique à l'aide des named constructors et il n'est possible de les instancier dans une êtat invalide. <br>
+ * Les Entities sont conçues de maniere non-anemique à l'aide des named constructors et il n'est pas possible de les instancier dans une êtat invalide. <br>
  * Les Id sont implémentés sous forme de Value Object pour assurer le Information Hiding. <br>
  * Les Services s'occupent de recevoir et gérer les requêtes qui arrivent depuis le layer Application et s'assurent que la logique interne soit respectée. <br>
  * Les Repositories fournissent des interfaces pour le layer Infra. <br>
