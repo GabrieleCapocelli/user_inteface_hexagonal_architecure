@@ -296,6 +296,6 @@ Le layer Infra s'occupe de récuperer et persister la donnée.
  * L'ORM, par contre, a été utilisé pour génerer automatiquement le database et mettre à jour le schema en mappant en yml les Entities.
 
 <h3 id="tests">TESTS</h3>
-En considérant le scope du test, je n'ai pas cherché le 100% de code coverage et je n'ai testé aucune des méthodes que l'on trouve normalement dans des projets PHP (getters and setters, constructors etc.). <br>
+En considérant le scope du projet, je n'ai pas cherché le 100% de code coverage et je n'ai testé aucune des méthodes que l'on trouve normalement dans des projets PHP (getters and setters, constructors etc.). <br>
 Je n’ai donc testé que quelques-unes des méthodes propres à cette application, en implémentant des tests d’intégration, gérés par phpunit. <br>
 
